@@ -8,8 +8,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 				    $pass=$_POST['pass'];
 
 $con = mysqli_connect("localhost", "root","", "sql_injection");
+
 				    if (!$con) {
-				        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+				        echo "Falha ao conectar o MySQL: " . mysqli_connect_error();
 					}
 
 				    $stmt = $con->prepare("SELECT * FROM login WHERE username = ? AND password = ?");
@@ -21,8 +22,6 @@ $con = mysqli_connect("localhost", "root","", "sql_injection");
 
         			if(!$row){
 						header('Location: solucaoLogin.html');
-						// echo "<SCRIPT>alert('Login ou senha inválida!');</SCRIPT>";
-			            // echo "Dados Incorretos!";
 			        }
 			        else {
 			            header('Location: solucaoLogado.html');
